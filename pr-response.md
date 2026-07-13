@@ -118,21 +118,8 @@ Or run the automated suite: `pytest tests/ -v` (11 tests, all passing).
 
 ## Commit History
 
-```
-d577b3d feat: add watchlist model, service, and endpoints
-8e3b892 fix: update film retrieval method to use db.session.get in collection and watchlist services
-00bcfd1 fix: rename save_to_watchlist to add_to_watchlist per naming convention
-cf19fed fix: add deduplication check to prevent duplicate watchlist entries
-a62c787 test: add test for nonexistent film_id in add_to_watchlist
-e186f90 test: add test for duplicate watchlist entry rejection
-e15b6d7 feat: add remove_from_watchlist() following collection removal pattern
-c93ac0d feat: add public parameter to add_to_watchlist for explicit visibility control
-f765a71 fix: restore WatchlistEntry model with UUID film_id after main's ID refactor
-acec4d3 fix: sort get_watchlist by date_added descending per Comment 5
-e864f53 fix: default watchlist entries to private (public=False) per Comment 4
-<hash> docs: add pr-response.md documenting review responses and design decisions
-```
+Screenshot of `git log --oneline origin/main..HEAD --reverse` on `feature/watchlist` (12 commits, all conventional, no merge commits):
 
-No merge commits (`git log --merges origin/main..feature/watchlist` returns nothing) — the branch is fully rebased on `main`, which already includes the UUID migration.
+![git log --oneline showing 12 conventional commits with no merge commits](docs/git-log-screenshot.png)
 
-*(Note: the above is the raw `git log --oneline --reverse` output, with `<hash>` for this doc's own commit since it's self-referential — run `git log --oneline` for the real value. An actual screenshot of the terminal should be substituted here before final submission, per the assignment's checkpoint requirement.)*
+No merge commits (`git log --merges origin/main..feature/watchlist` returns nothing) — the branch is fully rebased on `main`, which already includes the UUID migration. The final commit visible above (`d33293b` at time of writing) may show a different hash by the time this is viewed, since any further edit to this file after the screenshot was taken creates a new commit on top — check `git log --oneline` directly for the current tip.

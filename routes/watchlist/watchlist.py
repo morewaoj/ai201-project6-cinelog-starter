@@ -29,7 +29,7 @@ def add_film(user_id):
     """
     POST /watchlist/<user_id>/add
 
-    Body: { "film_id": "<uuid>", "public": <bool> }  (public optional, defaults to True)
+    Body: { "film_id": "<uuid>", "public": <bool> }  (public optional, defaults to False)
     """
     data = request.get_json()
     if not data or "film_id" not in data:
@@ -39,7 +39,7 @@ def add_film(user_id):
         entry = add_to_watchlist(
             user_id=user_id,
             film_id=data["film_id"],
-            public=data.get("public", True),
+            public=data.get("public", False),
         )
         return jsonify(entry.to_dict()), 201
     except FilmNotFoundError as e:

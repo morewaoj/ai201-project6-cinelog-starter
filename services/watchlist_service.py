@@ -19,7 +19,7 @@ class NotInWatchlistError(Exception):
     pass
 
 
-def add_to_watchlist(user_id, film_id, public=True):
+def add_to_watchlist(user_id, film_id, public=False):
     """
     Save a film to a user's watchlist.
 
@@ -27,7 +27,7 @@ def add_to_watchlist(user_id, film_id, public=True):
         user_id (str): UUID of the user.
         film_id (str): UUID of the film.
         public (bool, optional): Whether the entry is visible to other users.
-            Defaults to True (see pr-response.md, Comment 4 for reasoning).
+            Defaults to False (see pr-response.md, Comment 4 for reasoning).
 
     Returns:
         WatchlistEntry: The newly created entry.

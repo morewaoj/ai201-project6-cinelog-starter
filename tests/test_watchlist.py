@@ -148,19 +148,19 @@ def test_get_watchlist_returns_newest_first(app, sample_user):
 
 # ── Visibility ───────────────────────────────────────────────────────────────
 
-def test_add_to_watchlist_defaults_to_public(app, sample_user, sample_film):
+def test_add_to_watchlist_defaults_to_private(app, sample_user, sample_film):
     """
-    Entries should default to public=True when the caller doesn't specify.
+    Entries should default to public=False when the caller doesn't specify.
     """
     with app.app_context():
         entry = add_to_watchlist(user_id=sample_user, film_id=sample_film)
-        assert entry.public is True
+        assert entry.public is False
 
 
-def test_add_to_watchlist_honors_explicit_public_false(app, sample_user, sample_film):
+def test_add_to_watchlist_honors_explicit_public_true(app, sample_user, sample_film):
     """
-    Callers should be able to explicitly opt a watchlist entry out of visibility.
+    Callers should be able to explicitly opt a watchlist entry into visibility.
     """
     with app.app_context():
-        entry = add_to_watchlist(user_id=sample_user, film_id=sample_film, public=False)
-        assert entry.public is False
+        entry = add_to_watchlist(user_id=sample_user, film_id=sample_film, public=True)
+        assert entry.public is True
